@@ -1,12 +1,10 @@
-package com.technlolab.clients.repositories;
-import com.technlolab.clients.models.Client;
+package com.technlolab.produits.repositories;
+import com.technlolab.produits.models.Produit;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
-
 @Repository
-public interface ClientRepository extends JpaRepository<Client, Long> {
+public interface ProduitRepository extends JpaRepository<Produit, Long> {
 
 }
 

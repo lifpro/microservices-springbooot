@@ -1,8 +1,7 @@
-package com.technlolab.clients.controllers;
+package com.technlolab.commandes.controllers;
 
-import com.technlolab.clients.models.Client;
-import com.technlolab.clients.services.ClientService;
-
+import com.technlolab.commandes.models.Commande;
+import com.technlolab.commandes.services.CommandeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,18 +9,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/clients")
-public class ClientController {
+@RequestMapping("/api/commandes")
+public class CommandeController {
     @Autowired
-    private ClientService service;
+    private CommandeService service;
 
     @PostMapping
-    public ResponseEntity<Client> creerClient(@RequestBody Client utilisateur) {
-        return ResponseEntity.ok(service.creerClient(utilisateur));
+    public ResponseEntity<Commande> creerCommande(@RequestBody Commande utilisateur) {
+        return ResponseEntity.ok(service.creerCommande(utilisateur));
     }
 
     @GetMapping
-    public ResponseEntity<List<Client>> getClients() {
-        return ResponseEntity.ok(service.getAllClients());
+    public ResponseEntity<List<Commande>> getCommandes() {
+        return ResponseEntity.ok(service.getAllCommandes());
     }
 }

@@ -1,4 +1,4 @@
-package com.technlolab.clients.models;
+package com.technlolab.commandes.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -12,13 +12,17 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "clients")
-public class Client {
+@Table(name = "commandes")
+public class Commande {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nom;
-    private String email;
+    private Long utilisateurId;
+    private Long clientId;
+    private Long produitId;
+    private Integer quantite;
+    private Double pu;
+    private Double montant;
 
 
 }

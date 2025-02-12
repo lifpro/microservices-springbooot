@@ -1,22 +1,22 @@
-package com.technlolab.clients.services;
+package com.technlolab.produits.services;
 
-import com.technlolab.clients.models.Client;
-import com.technlolab.clients.repositories.ClientRepository;
+import com.technlolab.produits.models.Produit;
+import com.technlolab.produits.repositories.ProduitRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class ClientService {
+public class ProduitService {
     @Autowired
-    private ClientRepository repository;
+    private ProduitRepository repository;
 
-    public Client creerClient(Client utilisateur) {
+    public Produit creerProduit(Produit utilisateur) {
         return repository.save(utilisateur);
     }
 
-    public List<Client> getAllClients() {
+    public List<Produit> getAllProduits() {
         return repository.findAll();
     }
 }

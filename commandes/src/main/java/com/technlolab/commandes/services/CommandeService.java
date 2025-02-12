@@ -1,22 +1,22 @@
-package com.technlolab.clients.services;
+package com.technlolab.commandes.services;
 
-import com.technlolab.clients.models.Client;
-import com.technlolab.clients.repositories.ClientRepository;
+import com.technlolab.commandes.models.Commande;
+import com.technlolab.commandes.repositories.CommandeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class ClientService {
+public class CommandeService {
     @Autowired
-    private ClientRepository repository;
+    private CommandeRepository repository;
 
-    public Client creerClient(Client utilisateur) {
+    public Commande creerCommande(Commande utilisateur) {
         return repository.save(utilisateur);
     }
 
-    public List<Client> getAllClients() {
+    public List<Commande> getAllCommandes() {
         return repository.findAll();
     }
 }

@@ -1,8 +1,7 @@
-package com.technlolab.clients.controllers;
+package com.technlolab.produits.controllers;
 
-import com.technlolab.clients.models.Client;
-import com.technlolab.clients.services.ClientService;
-
+import com.technlolab.produits.models.Produit;
+import com.technlolab.produits.services.ProduitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,18 +9,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/clients")
-public class ClientController {
+@RequestMapping("/api/produits")
+public class ProduitController {
     @Autowired
-    private ClientService service;
+    private ProduitService service;
 
     @PostMapping
-    public ResponseEntity<Client> creerClient(@RequestBody Client utilisateur) {
-        return ResponseEntity.ok(service.creerClient(utilisateur));
+    public ResponseEntity<Produit> creerProduit(@RequestBody Produit utilisateur) {
+        return ResponseEntity.ok(service.creerProduit(utilisateur));
     }
 
     @GetMapping
-    public ResponseEntity<List<Client>> getClients() {
-        return ResponseEntity.ok(service.getAllClients());
+    public ResponseEntity<List<Produit>> getProduits() {
+        return ResponseEntity.ok(service.getAllProduits());
     }
 }
