@@ -1,0 +1,29 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: utilisateur-service
+          uri: lb://UTILISATEUR-SERVICE
+          predicates:
+            - Path=/api/utilisateurs/**
+        - id: client-service
+          uri: lb://CLIENT-SERVICE
+          predicates:
+            - Path=/api/clients/**
+        - id: produit-service
+          uri: lb://PRODUIT-SERVICE
+          predicates:
+            - Path=/api/produits/**
+        - id: commande-service
+          uri: lb://COMMANDE-SERVICE
+          predicates:
+            - Path=/api/commandes/**
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
