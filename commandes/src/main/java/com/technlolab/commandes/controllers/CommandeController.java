@@ -1,5 +1,6 @@
 package com.technlolab.commandes.controllers;
 
+import com.technlolab.commandes.dto.ProduitDTO;
 import com.technlolab.commandes.models.Commande;
 import com.technlolab.commandes.services.CommandeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +23,10 @@ public class CommandeController {
     @GetMapping
     public ResponseEntity<List<Commande>> getCommandes() {
         return ResponseEntity.ok(service.getAllCommandes());
+    }
+
+    @GetMapping("/{produitId}/produit")
+    public ResponseEntity<ProduitDTO> getProduitParCommande(@PathVariable Long produitId) {
+        return ResponseEntity.ok(service.getProduitParCommande(produitId));
     }
 }
