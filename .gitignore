@@ -1,0 +1,19 @@
+HELP.md
+clients/target/
+commandes/target/
+clients/!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+clients/.idea
+clients/.mvn
+
+
+### IntelliJ IDEA ###
+.idea
+.mvn
+*.iws
+*.iml
+*.ipr
+*.zip
+
+
