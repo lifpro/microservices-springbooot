@@ -7,6 +7,10 @@ spring:
   cloud:
     gateway:
       routes:
+        - id: auth-service
+          uri: lb://AUTH-SERVICE
+          predicates:
+            - Path=/api/auth/**
         - id: utilisateur-service
           uri: lb://UTILISATEUR-SERVICE
           predicates:
@@ -19,6 +23,8 @@ spring:
           uri: lb://PRODUIT-SERVICE
           predicates:
             - Path=/api/produits/**
+          filters:
+            - AuthenticationFilter
         - id: commande-service
           uri: lb://COMMANDE-SERVICE
           predicates:
