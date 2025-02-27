@@ -20,3 +20,7 @@ clients/!.mvn/wrapper/maven-wrapper.jar
 *.zip
 
 
+/produits/target/
+/eureka/target/
+/gateway/target/
+/utilisateurs/target/
