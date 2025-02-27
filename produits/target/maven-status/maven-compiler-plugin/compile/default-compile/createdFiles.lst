@@ -1,0 +1,6 @@
+com/technlolab/produits/models/Produit.class
+com/technlolab/produits/models/Produit$ProduitBuilder.class
+com/technlolab/produits/ProduitsApplication.class
+com/technlolab/produits/services/ProduitService.class
+com/technlolab/produits/controllers/ProduitController.class
+com/technlolab/produits/repositories/ProduitRepository.class

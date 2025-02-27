@@ -1,0 +1,65 @@
+version: '3.7'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: gescom_db
+      MYSQL_USER: dev
+      MYSQL_PASSWORD: dev
+    ports:
+      - "3307:3306"
+    command: --default-authentication-plugin=mysql_native_password
+    networks:
+      - microservices-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  eureka-server:
+    image: lifpro/eureka-server:1.0
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+    networks:
+      - microservices-network
+
+  api-gateway:
+    image: lifpro/api-gateway:1.0
+    container_name: api-gateway
+    ports:
+      - "9090:9090"
+    depends_on:
+      - eureka-server
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+    networks:
+      - microservices-network
+
+  produit-service:
+    #    build:
+    #      context: ./produits/
+    #      dockerfile: Dockerfile
+    image: lifpro/produit-service:1.0
+    container_name: produit-service
+    ports:
+      - "9093:9093"
+    depends_on:
+      - eureka-server
+      - mysql
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/gescom_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      - SPRING_DATASOURCE_USERNAME=dev
+      - SPRING_DATASOURCE_PASSWORD=dev
+    networks:
+      - microservices-network
+
+
+networks:
+  microservices-network:
+    driver: bridge
