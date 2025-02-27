@@ -18,8 +18,11 @@ clients/!.mvn/wrapper/maven-wrapper.jar
 *.iml
 *.ipr
 *.zip
+*.jar
 
-
+/commandes/target/
+/clients/target/
+/auth/target/
 /produits/target/
 /eureka/target/
 /gateway/target/
