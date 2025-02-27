@@ -1,4 +1,9 @@
 HELP.md
+eureka/target/
+gateway/target/
+produits/target/
+utilisateurs/target/
+auth/target/
 clients/target/
 commandes/target/
 clients/!.mvn/wrapper/maven-wrapper.jar
