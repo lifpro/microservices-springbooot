@@ -1,0 +1,5 @@
+/Users/lif/projets/technolab/springboot/microservices/produits/src/main/java/com/technlolab/produits/ProduitsApplication.java
+/Users/lif/projets/technolab/springboot/microservices/produits/src/main/java/com/technlolab/produits/controllers/ProduitController.java
+/Users/lif/projets/technolab/springboot/microservices/produits/src/main/java/com/technlolab/produits/models/Produit.java
+/Users/lif/projets/technolab/springboot/microservices/produits/src/main/java/com/technlolab/produits/repositories/ProduitRepository.java
+/Users/lif/projets/technolab/springboot/microservices/produits/src/main/java/com/technlolab/produits/services/ProduitService.java
