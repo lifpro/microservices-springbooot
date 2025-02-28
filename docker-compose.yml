@@ -98,6 +98,26 @@ services:
     networks:
       - microservices-network
 
+  commande-service:
+    build:
+      context: ./commandes/
+      dockerfile: Dockerfile
+    container_name: commande-service
+    restart: always
+    ports:
+      - "9094:9094"
+    depends_on:
+      - eureka-server
+      - mysql
+      - tempo
+      - loki
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/gescom_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      - SPRING_DATASOURCE_USERNAME=dev
+      - SPRING_DATASOURCE_PASSWORD=dev
+    networks:
+      - microservices-network
 
 networks:
   microservices-network:
