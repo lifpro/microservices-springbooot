@@ -20,6 +20,15 @@ services:
       timeout: 5s
       retries: 3
 
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    restart: unless-stopped
+    ports:
+      - "8762:9090"
+    volumes:
+      - ./observability/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+
   eureka-server:
     image: lifpro/eureka-server:1.0
     container_name: eureka-server
