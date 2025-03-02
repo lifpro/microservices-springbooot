@@ -28,6 +28,8 @@ services:
       - "8762:9090"
     volumes:
       - ./observability/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - microservices-network
 
   tempo:
     image: grafana/tempo
@@ -39,6 +41,8 @@ services:
     ports:
       - "3200:3200" # Tempo
       - "9411:9411" # zipkin
+    networks:
+      - microservices-network
 
   loki:
     image: grafana/loki:main
@@ -46,6 +50,8 @@ services:
     command: [ "-config.file=/etc/loki/local-config.yaml" ]
     ports:
       - "3100:3100"
+    networks:
+      - microservices-network
 
   grafana:
     image: grafana/grafana
@@ -58,6 +64,8 @@ services:
     environment:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin
+    networks:
+      - microservices-network
 
   eureka-server:
     image: lifpro/eureka-server:1.0
@@ -99,9 +107,10 @@ services:
       - microservices-network
 
   commande-service:
-    build:
-      context: ./commandes/
-      dockerfile: Dockerfile
+    image: lifpro/commande-service:1.0
+#    build:
+#      context: ./commandes/
+#      dockerfile: Dockerfile
     container_name: commande-service
     restart: always
     ports:
